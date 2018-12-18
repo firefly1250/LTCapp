@@ -6,9 +6,34 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label Text="{Binding Text}" FontSize="Large"
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+
+        <StackLayout Orientation="Vertical" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" 
+                               Text="{Binding Path=RefTemp,StringFormat='{0}℃'}" 
+                               HorizontalTextAlignment="End" FontSize="Large"/>
+            </Grid>
+            <Stepper Maximum="90" Minimum="40" Increment="0.5"  
+                     HorizontalOptions="Center" Value="{Binding RefTemp}"/>
+        </StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Text="OFF" Command="{Binding Off}"/>
+            <Button Grid.Column="1" Text="CONTROL" Command="{Binding Control}"/>
+            <Button Grid.Column="2" Text="ON" Command="{Binding On}"/>
+        </Grid>
+
     </StackLayout>
 
 </ContentPage>
